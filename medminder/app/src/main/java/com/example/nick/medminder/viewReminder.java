@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class viewReminder extends AppCompatActivity {
 
-    reminderDB db;
     ArrayAdapter<String> adapter;
     ListView lstTask;
 
@@ -19,9 +18,6 @@ public class viewReminder extends AppCompatActivity {
         setContentView(R.layout.activity_view_reminder);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        db = new reminderDB(this);
-        lstTask = (ListView)findViewById(R.id.lv_view_reminder);
     }
 
     @Override

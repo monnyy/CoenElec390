@@ -28,7 +28,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".createReminder" />
-        <activity android:name=".editUser"></activity>
+        <activity android:name=".editUser" />
+        <activity android:name=".loginpage"></activity>
     </application>
 
 </manifest>

@@ -7,74 +7,102 @@
     tools:context="com.example.nick.medminder.userSelect"
     tools:layout_editor_absoluteY="81dp">
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/gradient">
 
-        <Button
-            android:id="@+id/btn_user_create"
-            android:layout_width="350dp"
-            android:layout_height="86dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
-            android:text="Create User"
-            android:textSize="35sp" />
 
-        <Button
-            android:id="@+id/btn_user_temp"
-            android:layout_width="150dp"
+
+        <ImageView
+            android:id="@+id/login_logo2"
+            android:layout_width="120dp"
             android:layout_height="150dp"
-            android:layout_alignLeft="@+id/btn_user_temp3"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/btn_user_temp3"
-            android:layout_marginTop="14dp"
-            android:text="User 1*"
-            android:textSize="25sp" />
-
-        <Button
-            android:id="@+id/btn_user_temp3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignLeft="@+id/btn_user_create"
-            android:layout_alignStart="@+id/btn_user_create"
-            android:layout_alignTop="@+id/btn_user_temp2"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:text="User 3"
-            android:textSize="25sp" />
-
-        <Button
-            android:id="@+id/btn_user_temp2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignLeft="@+id/btn_user_temp4"
-            android:layout_alignStart="@+id/btn_user_temp4"
-            android:layout_centerVertical="true"
-            android:text="User 4"
-            android:textSize="25sp" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="43dp"
+            app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:id="@+id/temp_suser_txt"
+            android:id="@+id/welcome_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_user_create"
+            android:layout_below="@+id/login_logo"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="28dp"
-            android:text="Temporary User Select Screen for Skeleton" />
+            android:layout_marginTop="28dp"
+            android:fontFamily="cursive"
+            android:text="| Welcome |"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/user_name2"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="99dp"
+            android:background="#11000000"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:drawableLeft="@drawable/ic_action_user"
+            android:ems="10"
+            android:fontFamily="casual"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textAppearance="@android:style/TextAppearance.Widget.EditText"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="start" />
+
+        <EditText
+            android:id="@+id/user_pwd2"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="29dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_pass"
+            android:ems="10"
+            android:fontFamily="casual"
+            android:hint="Password"
+            android:inputType="numberPassword"
+            android:numeric="integer|decimal"
+            android:password="true"
+            android:textAlignment="viewStart"
+            android:textAppearance="@android:style/TextAppearance.Widget.EditText"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="start" />
 
         <Button
-            android:id="@+id/btn_user_temp4"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignEnd="@+id/btn_user_create"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/btn_user_create"
-            android:layout_marginEnd="11dp"
-            android:layout_marginRight="11dp"
-            android:layout_marginTop="16dp"
-            android:text="User 2"
-            android:textSize="25sp" />
+            android:id="@+id/login_button2"
+            style="@android:style/Widget.Button.Toggle"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_pwd"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="29dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="casual"
+            android:text="Login"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
