@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffd78c">
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:contentDescription="profile picture"
+        app:srcCompat="@drawable/edit_user" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/userAge"
+        android:layout_alignStart="@+id/userAge"
+        android:layout_below="@+id/login_logo"
+        android:layout_marginTop="15dp"
+        android:contentDescription="my name"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:drawableLeft="@drawable/ic_action_name"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:hint="My Name"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textAppearance="@android:style/TextAppearance.Widget.EditText"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="start"/>
+
+    <EditText
+        android:id="@+id/guardName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/userAddress"
+        android:layout_alignStart="@+id/userAddress"
+        android:layout_below="@+id/userAddress"
+        android:contentDescription="Guardian's Name"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:drawableLeft="@drawable/ic_action_guard_name"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:hint="Emergency Name"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textAppearance="@android:style/TextAppearance.Widget.EditText"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="start"/>
+
+    <EditText
+        android:id="@+id/userAge"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/login_logo"
+        android:layout_alignLeft="@+id/userAddress"
+        android:layout_alignRight="@+id/login_logo"
+        android:layout_alignStart="@+id/userAddress"
+        android:layout_below="@+id/userName"
+        android:layout_gravity="start"
+        android:drawableLeft="@drawable/ic_action_age"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:hint="Date of Birth"
+        android:inputType="datetime"
+        android:textAlignment="viewStart"
+        android:textAppearance="@android:style/TextAppearance.Widget.EditText"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/userAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userAge"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/ic_action_address"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:hint="My Home Address"
+        android:inputType="textPostalAddress"
+        android:textAlignment="viewStart"
+        android:textAppearance="@android:style/TextAppearance.Widget.EditText"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/guardPhone"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/guardName"
+        android:layout_alignStart="@+id/guardName"
+        android:layout_below="@+id/guardName"
+        android:drawableLeft="@drawable/ic_action_phone"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:hint="Emergency Phone"
+        android:inputType="phone"
+        android:textAlignment="viewStart"
+        android:textAppearance="@android:style/TextAppearance.Widget.EditText"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="start" />
+
+    <Button
+        android:id="@+id/save_profile_button"
+        style="@android:style/Widget.Button.Toggle"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="casual"
+        android:text="SAVE"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
