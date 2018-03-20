@@ -16,19 +16,27 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".splash"
-            android:label="@string/title_activity_splash"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_splash" />
         <activity android:name=".viewReminder" />
         <activity android:name=".createUser" />
-        <activity android:name=".userSelect">
+        <activity android:name=".userSelect" />
+        <activity android:name=".createReminder" />
+        <activity android:name=".editUser" />
+        <activity android:name="com.example.nick.medminder.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".createReminder" />
-        <activity android:name=".editUser"></activity>
+
+        <activity
+            android:name="com.example.nick.medminder.CreateUserProfileActivity"
+            android:label="Create/Edit Profile"
+            android:parentActivityName="com.example.nick.medminder.LoginActivity">
+        </activity>
+
     </application>
 
 </manifest>
