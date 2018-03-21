@@ -28,8 +28,13 @@ public class NotificationTrigger extends Service{
     }
 
     @Override
-    public void onCreate() {
+    public void onStart(Intent i, int startID) {
         createNotification();
+    }
+    @Override
+    public int onStartCommand(Intent i, int flags, int startID) {
+        createNotification();
+        return START_NOT_STICKY;
     }
 
     private NotificationManager notifManager;

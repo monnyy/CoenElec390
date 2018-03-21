@@ -37,6 +37,12 @@
             android:parentActivityName="com.example.nick.medminder.LoginActivity">
         </activity>
 
+        <service
+            android:name=".NotificationTrigger"
+            android:enabled="true">
+        </service>
+
     </application>
+
 
 </manifest>
