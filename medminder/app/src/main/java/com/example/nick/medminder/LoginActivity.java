@@ -1,9 +1,6 @@
 package com.example.nick.medminder;
 
 import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
-        alarmSet();
+        //alarmSet();
         Log.d(TAG, "The onCreate() event");
         setupUI();
     }
@@ -64,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
                     //get the inputed values
                     String nameValue = userName.getText().toString();
                     String passValue = passWord.getText().toString();
-                    createNotification();
                     Log.d(TAG, "The onClick() LOGGED IN event");
                     Toast toast = null;
 
@@ -103,69 +99,5 @@ public class LoginActivity extends AppCompatActivity {
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60*60*24, pIntent);
         Toast.makeText(LoginActivity.this, "Alarm Set", Toast.LENGTH_LONG).show();
-    }
-    private NotificationManager notifManager;
-    public void createNotification() {
-        final int NOTIFY_ID = 1002;
-
-        // There are hardcoding only for show it's just strings
-        String name = "my_package_channel";
-        String id = "my_package_channel_1"; // The user-visible name of the channel.
-        String description = "my_package_first_channel"; // The user-visible description of the channel.
-
-        Intent intent;
-        PendingIntent pendingIntent;
-        NotificationCompat.Builder builder;
-
-        if (notifManager == null) {
-            notifManager =
-                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel mChannel = notifManager.getNotificationChannel(id);
-            if (mChannel == null) {
-                mChannel = new NotificationChannel(id, name, importance);
-                mChannel.setDescription(description);
-                mChannel.enableVibration(true);
-                mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
-                notifManager.createNotificationChannel(mChannel);
-            }
-            builder = new NotificationCompat.Builder(this, id);
-
-            intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-
-            builder.setContentTitle("Hello")  // required
-                    .setSmallIcon(android.R.drawable.ic_popup_reminder) // required
-                    .setContentText(this.getString(R.string.app_name))  // required
-                    .setDefaults(Notification.DEFAULT_ALL)
-                    .setAutoCancel(true)
-                    .setContentIntent(pendingIntent)
-                    .setTicker("Hello")
-                    .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
-        } else {
-
-            builder = new NotificationCompat.Builder(this);
-
-            intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-
-            builder.setContentTitle("Hello")                           // required
-                    .setSmallIcon(android.R.drawable.ic_popup_reminder) // required
-                    .setContentText(this.getString(R.string.app_name))  // required
-                    .setDefaults(Notification.DEFAULT_ALL)
-                    .setAutoCancel(true)
-                    .setContentIntent(pendingIntent)
-                    .setTicker("Hello")
-                    .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400})
-                    .setPriority(Notification.PRIORITY_HIGH);
-        } // else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-        Notification notification = builder.build();
-        notifManager.notify(NOTIFY_ID, notification);
     }
 }

@@ -8,37 +8,30 @@ import android.widget.Button;
 
 public class splash extends AppCompatActivity {
 
-    Button btn_sw_profile, btn_edit_profile, btn_view_reminder, btn_create_reminder;
+    Button btn_edit_profile, btn_view_reminder, btn_create_reminder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-        btn_sw_profile = (Button) findViewById(R.id.btn_sw_profile);
-        btn_sw_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(splash.this, userSelect.class);
-                startActivity(intent);
-            }
-        });
-        btn_edit_profile = (Button) findViewById(R.id.btn_edit_profile);
+        setContentView(R.layout.activity_main_profile);
+
+        btn_edit_profile = (Button) findViewById(R.id.edit_profile_button);
         btn_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(splash.this, editUser.class);
+                Intent intent = new Intent(splash.this, CreateUserProfileActivity.class);
                 startActivity(intent);
             }
         });
-        btn_view_reminder = (Button) findViewById(R.id.btn_view_reminder);
+        /*btn_view_reminder = (Button) findViewById(R.id.btn_view_reminder);
         btn_view_reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(splash.this, viewReminder.class);
                 startActivity(intent);
             }
-        });
-        btn_create_reminder = (Button) findViewById(R.id.btn_create_reminder);
+        });*/
+        btn_create_reminder = (Button) findViewById(R.id.new_reminder_button);
         btn_create_reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

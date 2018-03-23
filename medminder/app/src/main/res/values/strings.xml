@@ -17,5 +17,5 @@
     <string name="title_activity_create_reminder">createReminder</string>
     <string name="title_activity_create_user">createUser</string>
     <string name="title_activity_view_reminder">viewReminder</string>
-    <string name="ALARM_SERVICE">testing!</string>
+    <string name="create_reminder_logo">The logo for the reminder page</string>
 </resources>

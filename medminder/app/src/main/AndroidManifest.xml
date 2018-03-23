@@ -14,14 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".splash"
-            android:label="@string/title_activity_splash" />
         <activity android:name=".viewReminder" />
-        <activity android:name=".createUser" />
-        <activity android:name=".userSelect" />
-        <activity android:name=".createReminder" />
-        <activity android:name=".editUser" />
         <activity android:name="com.example.nick.medminder.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -35,6 +28,18 @@
             android:name="com.example.nick.medminder.CreateUserProfileActivity"
             android:label="Create/Edit Profile"
             android:parentActivityName="com.example.nick.medminder.LoginActivity">
+        </activity>
+
+        <activity
+            android:name="com.example.nick.medminder.splash"
+            android:label="Splash Page"
+            android:parentActivityName="com.example.nick.medminder.LoginActivity">
+        </activity>
+
+        <activity
+            android:name="com.example.nick.medminder.createReminder"
+            android:label="Create Reminder"
+            android:parentActivityName="com.example.nick.medminder.splash">
         </activity>
 
         <service

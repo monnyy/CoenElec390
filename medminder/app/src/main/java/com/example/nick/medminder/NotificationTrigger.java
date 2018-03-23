@@ -40,7 +40,7 @@ public class NotificationTrigger extends Service{
     private NotificationManager notifManager;
 
     public void createNotification() {
-        final int NOTIFY_ID = 1002;
+        final int NOTIFY_ID = 1003;
 
         // There are hardcoding only for show it's just strings
         String name = "my_package_channel";
