@@ -14,7 +14,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
         app:srcCompat="@drawable/logo" />
-    <![CDATA[]]>
 
     <TextView
         android:id="@+id/welcome_text"
