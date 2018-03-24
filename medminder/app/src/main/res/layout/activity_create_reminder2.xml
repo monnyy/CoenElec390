@@ -132,15 +132,13 @@
         android:id="@+id/create_repeat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/create_text_repeat"
-        android:layout_alignBottom="@+id/create_text_repeat"
-        android:layout_toEndOf="@+id/create_text_repeat"
-        android:layout_toRightOf="@+id/create_text_repeat"
-        android:layout_toLeftOf="@id/repeat_switch"
-        android:layout_toStartOf="@+id/repeat_switch"
+        android:layout_alignBaseline="@+id/repeat_day"
+        android:layout_alignBottom="@+id/repeat_day"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:textColor="#000000"
-        android:textSize="30dp"
-        />
+        android:textSize="25sp"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/repeat_day"
@@ -240,5 +238,15 @@
         android:textSize="30dp"
         android:visibility="invisible"
         />
+
+    <Button
+        android:id="@+id/alarm_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/create_repeat"
+        android:layout_toLeftOf="@+id/repeat_text_min"
+        android:layout_toStartOf="@+id/repeat_text_min"
+        android:text="alarm off"
+        android:visibility="invisible"/>
 
 </RelativeLayout>
