@@ -51,41 +51,41 @@ public class LoginActivity extends AppCompatActivity {
         passWord.setFilters(FilterArrayID);
 
 
+        loginButton.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View V)
+            {
+                //get the inputed values
+                String nameValue = userName.getText().toString();
+                String passValue = passWord.getText().toString();
 
+                Log.d(TAG, "The onClick() LOGGED IN event");
 
+                Toast toast = null;
 
-            loginButton.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View V){
-
-                    //get the inputed values
-                    String nameValue = userName.getText().toString();
-                    String passValue = passWord.getText().toString();
-                    Log.d(TAG, "The onClick() LOGGED IN event");
-                    Toast toast = null;
-
-                    if (nameValue.isEmpty()) {
-                        toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Username ", Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-
-                    else if (passValue.isEmpty()) {
-                        toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Password ", Toast.LENGTH_LONG);
-                        //show when the save button has been clicked
-                        toast.show();
-                    }
-
-                    else if (nameValue.equals("admin") && passValue.equals("1234")) {
-
-
-                        Intent intent = new Intent(V.getContext(), CreateUserProfileActivity.class);
-                        startActivity(intent);
-                    }
+                if (nameValue.isEmpty() || !nameValue.equals("admin"))
+                {
+                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Username ", Toast.LENGTH_LONG);
+                    toast.show();
                 }
-            });
+
+                else if (passValue.isEmpty() || !passValue.equals("1234"))
+                {
+                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Password ", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+
+                else if (nameValue.equals("admin") && passValue.equals("1234"))
+                {
+                    Intent intent = new Intent(LoginActivity.this, splash.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
-    private void alarmSet() {
+    private void alarmSet()
+    {
         Intent intent = new Intent(this, NotificationTrigger.class);
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
         PendingIntent pIntent = PendingIntent.getService(this, 0, intent, 0);

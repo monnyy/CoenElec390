@@ -12,20 +12,22 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:contentDescription="profile picture"
+        android:contentDescription="@string/profile_picture"
         app:srcCompat="@drawable/edit_user" />
 
     <EditText
         android:id="@+id/userName"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/userAge"
-        android:layout_alignStart="@+id/userAge"
+        android:layout_alignLeft="@+id/userDOB"
+        android:layout_alignStart="@+id/userDOB"
         android:layout_below="@+id/login_logo"
-        android:layout_marginTop="15dp"
-        android:contentDescription="my name"
+        android:layout_gravity="start"
+        android:layout_marginTop="17dp"
+        android:contentDescription="@string/my_name"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:drawableLeft="@drawable/ic_action_name"
+        android:drawableStart="@drawable/ic_action_name"
         android:ems="10"
         android:fontFamily="casual"
         android:hint="My Name"
@@ -33,8 +35,7 @@
         android:textAlignment="viewStart"
         android:textAppearance="@android:style/TextAppearance.Widget.EditText"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_gravity="start"/>
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/guardName"
@@ -43,21 +44,21 @@
         android:layout_alignLeft="@+id/userAddress"
         android:layout_alignStart="@+id/userAddress"
         android:layout_below="@+id/userAddress"
-        android:contentDescription="Guardian's Name"
+        android:contentDescription="@string/guardian_s_name"
         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:drawableLeft="@drawable/ic_action_guard_name"
         android:ems="10"
         android:fontFamily="casual"
-        android:hint="Emergency Name"
+        android:hint="@string/emergency_name"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
         android:textAppearance="@android:style/TextAppearance.Widget.EditText"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start" android:drawableStart="@drawable/ic_action_guard_name" />
 
     <EditText
-        android:id="@+id/userAge"
+        android:id="@+id/userDOB"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/login_logo"
@@ -69,28 +70,29 @@
         android:drawableLeft="@drawable/ic_action_age"
         android:ems="10"
         android:fontFamily="casual"
-        android:hint="Date of Birth"
+        android:hint="@string/date_of_birth"
         android:inputType="datetime"
         android:textAlignment="viewStart"
         android:textAppearance="@android:style/TextAppearance.Widget.EditText"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" android:drawableStart="@drawable/ic_action_age" />
 
     <EditText
         android:id="@+id/userAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/userAge"
+        android:layout_below="@+id/userDOB"
         android:layout_centerHorizontal="true"
         android:drawableLeft="@drawable/ic_action_address"
         android:ems="10"
         android:fontFamily="casual"
-        android:hint="My Home Address"
+        android:hint="@string/my_home_address"
         android:inputType="textPostalAddress"
         android:textAlignment="viewStart"
         android:textAppearance="@android:style/TextAppearance.Widget.EditText"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" android:drawableStart="@drawable/ic_action_address"
+        android:gravity="start" />
 
     <EditText
         android:id="@+id/guardPhone"
@@ -102,25 +104,25 @@
         android:drawableLeft="@drawable/ic_action_phone"
         android:ems="10"
         android:fontFamily="casual"
-        android:hint="Emergency Phone"
+        android:hint="@string/emergency_phone"
         android:inputType="phone"
         android:textAlignment="viewStart"
         android:textAppearance="@android:style/TextAppearance.Widget.EditText"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_gravity="start" />
+        android:layout_gravity="start" android:drawableStart="@drawable/ic_action_phone" />
 
     <Button
         android:id="@+id/save_profile_button"
         style="@android:style/Widget.Button.Toggle"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/guardPhone"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="casual"
-        android:text="SAVE"
+        android:text="@string/save"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"

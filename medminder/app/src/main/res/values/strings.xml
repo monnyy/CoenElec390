@@ -18,4 +18,20 @@
     <string name="title_activity_create_user">createUser</string>
     <string name="title_activity_view_reminder">viewReminder</string>
     <string name="create_reminder_logo">The logo for the reminder page</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="view_my_reminders">VIEW MY REMINDERS</string>
+    <string name="create_a_reminder">CREATE A REMINDER</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="username">Username</string>
+    <string name="welcome">| Welcome |</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="app_logo">App logo</string>
+    <string name="guardian_s_name">Guardian\'s Name</string>
+    <string name="my_name">my name</string>
+    <string name="emergency_name">Emergency Name</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="emergency_phone">Emergency Phone</string>
+    <string name="my_home_address">My Home Address</string>
+    <string name="save">SAVE</string>
 </resources>

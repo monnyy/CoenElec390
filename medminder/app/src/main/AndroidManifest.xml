@@ -27,12 +27,12 @@
         <activity
             android:name="com.example.nick.medminder.CreateUserProfileActivity"
             android:label="Create/Edit Profile"
-            android:parentActivityName="com.example.nick.medminder.LoginActivity">
+            android:parentActivityName="com.example.nick.medminder.splash">
         </activity>
 
         <activity
             android:name="com.example.nick.medminder.splash"
-            android:label="Splash Page"
+            android:label="My Profile"
             android:parentActivityName="com.example.nick.medminder.LoginActivity">
         </activity>
 
