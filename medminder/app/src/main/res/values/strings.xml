@@ -34,4 +34,5 @@
     <string name="emergency_phone">Emergency Phone</string>
     <string name="my_home_address">My Home Address</string>
     <string name="save">SAVE</string>
+    <string name="setDate"><u>Tap to Set Date</u></string>
 </resources>

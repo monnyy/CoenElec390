@@ -1,89 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.example.nick.medminder.createReminder"
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
         android:id="@+id/create_Name"
-        android:layout_width="0dp"
-        android:layout_height="73dp"
-        android:layout_marginBottom="41dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:ems="10"
+        android:hint="Medication Name"
         android:inputType="textPersonName"
-        android:text="Medication Name"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_spinner_day"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/create_spinner_day"
-        android:layout_width="0dp"
-        android:layout_height="73dp"
-        android:layout_marginBottom="38dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginStart="13dp"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_Name" />
+        android:textSize="40dp" />
 
     <TextView
         android:id="@+id/create_text_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Day"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_spinner_day"
-        app:layout_constraintStart_toStartOf="@+id/create_spinner_day" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/create_Name"
+        android:layout_marginTop="20dp"
+        android:text="Date: "
+        android:textColor="#FF0000"
+        android:textSize="30dp" />
 
-    <EditText
+    <TextView
+        android:id="@+id/create_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/create_text_date"
+        android:layout_alignBottom="@+id/create_text_date"
+        android:layout_toEndOf="@+id/create_text_date"
+        android:layout_toRightOf="@+id/create_text_date"
+        android:clickable="true"
+        android:hint="Click to set"
+        android:onClick="setdate"
+        android:textSize="30dp"
+        android:textColor="#000000"/>
+
+
+    <Spinner
+        android:id="@+id/create_spinner_day"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/create_text_day"
+        android:layout_toEndOf="@+id/create_text_day"
+        android:layout_toRightOf="@+id/create_text_day"
+        android:textSize="90dp" />
+
+    <TextView
+        android:id="@+id/create_text_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/create_date"
+        android:layout_marginTop="18dp"
+        android:text="Day: "
+        android:textColor="#FF0000"
+        android:textSize="30dp" />
+
+    <TextView
         android:id="@+id/create_time"
-        android:layout_width="0dp"
-        android:layout_height="73dp"
-        android:layout_marginBottom="253dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginStart="13dp"
-        android:ems="10"
-        android:inputType="time"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_spinner_day" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_spinner_day"
+        android:layout_alignBaseline="@+id/create_text_time"
+        android:layout_alignBottom="@+id/create_text_time"
+        android:layout_toEndOf="@+id/create_text_time"
+        android:layout_toRightOf="@+id/create_text_time"
+        android:clickable="true"
+        android:hint="Click to set"
+        android:onClick="settime"
+        android:textColor="#000000"
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/create_text_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_time"
-        app:layout_constraintStart_toStartOf="@+id/create_time" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:text="Time: "
+        android:textColor="#FF0000"
+        android:textSize="30dp" />
 
     <Button
         android:id="@+id/create_btn"
         android:layout_width="317dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:text="CREATE"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_time"
-        app:layout_constraintVertical_bias="0.947" />
+        android:textSize="30dp" />
 
-</android.support.constraint.ConstraintLayout>
+    <Switch
+        android:id="@+id/repeat_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/create_time"
+        android:layout_alignBaseline="@+id/create_text_repeat"
+        android:layout_alignBottom="@+id/create_text_repeat"
+        android:layout_below="@+id/create_time"
+        android:layout_marginTop="30dp"
+        android:onClick="setRepeat"
+        android:checked="false"
+        android:textOff="Off"
+        android:textOn="On" />
+
+    <TextView
+        android:id="@+id/create_text_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/create_time"
+        android:layout_marginTop="16dp"
+        android:text="Repeat "
+        android:textColor="#FF0000"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/create_repeat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/repeat_day"
+        android:layout_alignBottom="@+id/repeat_day"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/repeat_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/create_text_repeat"
+        android:layout_marginTop="12dp"
+        android:layout_toLeftOf="@+id/create_spinner_day"
+        android:layout_toStartOf="@+id/create_spinner_day"
+        android:ems="3"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="30sp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/repeat_text_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/repeat_day"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/repeat_day"
+        android:layout_toRightOf="@+id/repeat_day"
+        android:text="D"
+        android:textSize="30dp"
+        android:layout_alignBaseline="@+id/repeat_day"
+        android:layout_alignBottom="@+id/repeat_day"
+        android:visibility="invisible"
+        />
+
+    <EditText
+        android:id="@+id/repeat_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/repeat_text_day"
+        android:layout_alignBottom="@+id/repeat_text_day"
+        android:layout_toEndOf="@+id/repeat_text_day"
+        android:layout_toRightOf="@+id/repeat_text_day"
+        android:ems="3"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textSize="30sp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/repeat_text_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/repeat_hour"
+        android:layout_alignBottom="@+id/repeat_hour"
+        android:layout_toEndOf="@+id/repeat_hour"
+        android:layout_toRightOf="@+id/repeat_hour"
+        android:text="H"
+        android:textSize="30dp"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/repeat_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/repeat_text_hour"
+        android:layout_alignBottom="@+id/repeat_text_hour"
+        android:layout_toEndOf="@+id/repeat_text_hour"
+        android:layout_toRightOf="@+id/repeat_text_hour"
+        android:ems="3"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textSize="30sp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/repeat_text_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/repeat_min"
+        android:layout_alignBottom="@+id/repeat_min"
+        android:layout_alignTop="@+id/repeat_min"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/repeat_min"
+        android:layout_toRightOf="@+id/repeat_min"
+        android:text="Min"
+        android:textSize="25dp"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/repeat_btn"
+        android:layout_width="317dp"
+        android:layout_height="72dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="SAVE"
+        android:textSize="30dp"
+        android:visibility="invisible"
+        />
+
+    <Button
+        android:id="@+id/alarm_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/create_repeat"
+        android:layout_toLeftOf="@+id/repeat_text_min"
+        android:layout_toStartOf="@+id/repeat_text_min"
+        android:text="alarm off"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
