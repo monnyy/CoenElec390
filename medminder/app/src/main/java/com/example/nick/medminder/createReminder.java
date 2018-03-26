@@ -19,11 +19,13 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import static java.lang.Integer.parseInt;
+
 public class createReminder extends AppCompatActivity {
 
-    Button create_btn;
-    TextView date_view, time_view;
-    EditText med_name, repeat_day;
+    Button create_btn,period_save_btn;
+    TextView date_view, time_view,period_text_day,period_text_hour,period_text_min,repeat_day;
+    EditText med_name, period_day,period_hour,period_min;
     AlarmManager alarmManager;
     Switch repeat_switch;
     PendingIntent pIntent;
@@ -36,11 +38,18 @@ public class createReminder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_reminder);
+        period_save_btn = (Button)findViewById(R.id.period_save_btn);
         create_btn = (Button) findViewById(R.id.createReminderBTN);
         date_view = (TextView) findViewById(R.id.create_date);
         time_view = (TextView) findViewById(R.id.create_time);
+        period_text_day = (TextView)findViewById(R.id.period_text_day);
+        period_text_hour = (TextView)findViewById(R.id.period_text_hour);
+        period_text_min = (TextView)findViewById(R.id.period_text_min);
         med_name = (EditText) findViewById(R.id.medName);
-        repeat_day = (EditText) findViewById(R.id.repeat_days);
+        repeat_day = (TextView) findViewById(R.id.repeat_days);
+        period_day = (EditText)findViewById(R.id.period_day);
+        period_hour = (EditText)findViewById(R.id.period_hour);
+        period_min = (EditText)findViewById(R.id.period_min);
         repeat_switch = (Switch) findViewById(R.id.repeat_switch);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
@@ -68,7 +77,16 @@ public class createReminder extends AppCompatActivity {
                 }
             }
         });
+
+        period_save_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setUI();
+            }
+        });
     }
+
+
 
     public void setDate(View view) {
         final Calendar calendar = Calendar.getInstance();
@@ -111,12 +129,79 @@ public class createReminder extends AppCompatActivity {
         boolean on = ((Switch) view).isChecked();
         if (on) {
             repeat = true;
-            repeat_day.setVisibility(View.VISIBLE);
+            period_day.setVisibility(View.VISIBLE);
+            period_hour.setVisibility(View.VISIBLE);
+            period_min.setVisibility(View.VISIBLE);
+            period_text_day.setVisibility(View.VISIBLE);
+            period_text_hour.setVisibility(View.VISIBLE);
+            period_text_min.setVisibility(View.VISIBLE);
+            period_save_btn.setVisibility(View.VISIBLE);
+            repeat_day.setVisibility(View.INVISIBLE);
         }
         else {
             repeat = false;
-            repeat_day.setText(null);
+            period_day.setText(null);
+            period_hour.setText(null);
+            period_min.setText(null);
+            period_day.setVisibility(View.INVISIBLE);
+            period_hour.setVisibility(View.INVISIBLE);
+            period_min.setVisibility(View.INVISIBLE);
+            period_text_day.setVisibility(View.INVISIBLE);
+            period_text_hour.setVisibility(View.INVISIBLE);
+            period_text_min.setVisibility(View.INVISIBLE);
+            period_save_btn.setVisibility(View.INVISIBLE);
             repeat_day.setVisibility(View.INVISIBLE);
         }
     }
+    public void setUI(){
+        String d, h, min;
+        d = period_day.getText().toString();
+        h = period_hour.getText().toString();
+        min = period_min.getText().toString();
+        if (d.isEmpty() && h.isEmpty() && min.isEmpty()) {
+            Toast toast = Toast.makeText(getApplicationContext(), "input repeat information", Toast.LENGTH_LONG);
+            toast.show();
+        }
+        else if (parseInt (h) >23){
+            Toast toast = Toast.makeText(getApplicationContext(), "repeat hours cannot be bigger than 23", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
+        else if (parseInt(min) > 59){
+            Toast toast = Toast.makeText(getApplicationContext(), "repeat minutes cannot be bigger than 59", Toast.LENGTH_LONG);
+            toast.show();
+        }
+        else {
+            if(d.isEmpty()){
+                repeat_day.setText("Every " + h + "h(s) " + min + "min(s)");
+            }
+            else if (d.isEmpty() && h.isEmpty()){
+                repeat_day.setText("Every " + min + "min(s)");
+            }
+            else if (d.isEmpty() && min.isEmpty()){
+                repeat_day.setText("Every " + h + "h(s) ");
+            }
+            else if (h.isEmpty() && min.isEmpty()){
+                repeat_day.setText("Every " + d + "D(s) ");
+            }
+            else if (h.isEmpty()){
+                repeat_day.setText("Every " + d + "D(s) " + min + "min(s)");
+            }
+            else if (min.isEmpty()){
+                repeat_day.setText("Every " + d + "D(s) " + h + "h(s) ");
+            }
+            else {
+                repeat_day.setText("Every " + d + "D(s) " + h + "h(s) " + min + "min(s)");
+            }
+            repeat_day.setVisibility(View.VISIBLE);
+            period_day.setVisibility(View.INVISIBLE);
+            period_hour.setVisibility(View.INVISIBLE);
+            period_min.setVisibility(View.INVISIBLE);
+            period_text_day.setVisibility(View.INVISIBLE);
+            period_text_hour.setVisibility(View.INVISIBLE);
+            period_text_min.setVisibility(View.INVISIBLE);
+            period_save_btn.setVisibility(View.INVISIBLE);
+        }
+    }
+
 }
