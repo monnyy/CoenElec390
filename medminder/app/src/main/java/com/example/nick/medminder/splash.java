@@ -49,7 +49,7 @@ public class splash extends AppCompatActivity {
         btn_create_reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(splash.this, createReminder.class);
+                Intent intent = new Intent(splash.this, MainActivity.class);
                 startActivity(intent);
             }
         });

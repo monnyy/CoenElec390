@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.nick.medminder.userSelect"
+    tools:layout_editor_absoluteY="81dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_user_create"
+            android:layout_width="350dp"
+            android:layout_height="86dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:text="Create User"
+            android:textSize="35sp" />
+
+        <Button
+            android:id="@+id/btn_user_temp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignLeft="@+id/btn_user_temp3"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/btn_user_temp3"
+            android:layout_marginTop="14dp"
+            android:text="User 1*"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btn_user_temp3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignLeft="@+id/btn_user_create"
+            android:layout_alignStart="@+id/btn_user_create"
+            android:layout_alignTop="@+id/btn_user_temp2"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:text="User 3"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btn_user_temp2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignLeft="@+id/btn_user_temp4"
+            android:layout_alignStart="@+id/btn_user_temp4"
+            android:layout_centerVertical="true"
+            android:text="User 4"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/temp_suser_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_user_create"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="28dp"
+            android:text="Temporary User Select Screen for Skeleton" />
+
+        <Button
+            android:id="@+id/btn_user_temp4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignEnd="@+id/btn_user_create"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/btn_user_create"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginTop="16dp"
+            android:text="User 2"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
