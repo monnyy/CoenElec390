@@ -1,10 +1,12 @@
 package com.example.nick.medminder;
 
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -30,7 +32,7 @@ public class createReminder extends AppCompatActivity {
     Switch repeat_switch;
     PendingIntent pIntent;
     private boolean repeat;
-    private int hour, min, day, month, year, rDays;
+    private int hour, min, day, month, year,thour,tmin,dyear,dmonth,dday, rDays;
     private String strRepeat;
     final private int dayInMillis = 1000*60*60*24;
 
@@ -54,6 +56,7 @@ public class createReminder extends AppCompatActivity {
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         repeat = false;
+
         final Calendar calendar = Calendar.getInstance();
         final Intent intent = new Intent(createReminder.this, NotificationTrigger.class);
 
@@ -62,19 +65,7 @@ public class createReminder extends AppCompatActivity {
         create_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pIntent = PendingIntent.getService(createReminder.this, 0, intent, 0);
-                calendar.set(year, month, day, hour, min);
-                if (repeat) {
-                    strRepeat = repeat_day.getText().toString();
-                    rDays = Integer.parseInt(strRepeat);
-                    rDays = rDays * dayInMillis;
-                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), rDays, pIntent);
-                    Toast.makeText(createReminder.this, "Repeating Reminder Set!", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pIntent);
-                    Toast.makeText(createReminder.this, "Reminder Set!", Toast.LENGTH_SHORT).show();
-                }
+                setalarm();
             }
         });
 
@@ -89,14 +80,17 @@ public class createReminder extends AppCompatActivity {
 
 
     public void setDate(View view) {
-        final Calendar calendar = Calendar.getInstance();
+       final Calendar calendar = Calendar.getInstance();
         day = calendar.get(Calendar.DAY_OF_MONTH);
         month = calendar.get(Calendar.MONTH);
         year = calendar.get(Calendar.YEAR);
         DatePickerDialog dpd = new DatePickerDialog(createReminder.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                date_view.setText(m + " / " + d + ", " + y);
+                dyear=y;
+                dmonth=m;
+                dday = d;
+                date_view.setText((m + 1) + " / " + d + ", " + y);
             }
         }, day, month, year);
         dpd.getDatePicker().setMinDate(System.currentTimeMillis());
@@ -107,21 +101,26 @@ public class createReminder extends AppCompatActivity {
         final Calendar calendar = Calendar.getInstance();
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
+
         TimePickerDialog tpd = new TimePickerDialog(createReminder.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
-            public void onTimeSet(TimePicker view, int hour, int min) {
+            public void onTimeSet(TimePicker view, int hours, int mins) {
                 String hString, mString;
-                if (hour < 10)
-                    hString = "0" + hour;
+                if (hours < 10)
+                    hString = "0" + hours;
                 else
-                    hString = "" + hour;
-                if (min < 10)
-                    mString = "0" + min;
+                    hString = "" + hours;
+                if (mins < 10)
+                    mString = "0" + mins;
                 else
-                    mString = "" + min;
+                    mString = "" + mins;
                 time_view.setText(hString + " : " + mString);
+                thour = hours;
+                tmin = mins;
             }
         }, hour, min, false);
+        hour = calendar.get(Calendar.HOUR_OF_DAY);
+        min = calendar.get(Calendar.MINUTE);
         tpd.show();
     }
 
@@ -203,5 +202,31 @@ public class createReminder extends AppCompatActivity {
             period_save_btn.setVisibility(View.INVISIBLE);
         }
     }
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private void setalarm () {
 
+        Intent intent = new Intent(createReminder.this, NotificationTrigger.class);
+
+        Calendar C = Calendar.getInstance();
+        C.set(Calendar.YEAR,dyear);
+        C.set(Calendar.MONTH,dmonth);
+        C.set(Calendar.DAY_OF_MONTH,dday);
+        C.set(Calendar.HOUR_OF_DAY,thour);
+        C.set(Calendar.MINUTE,tmin);
+        C.set(Calendar.SECOND,0);
+        pIntent = PendingIntent.getService(createReminder.this, 0, intent,0);
+
+        if (repeat) {
+            strRepeat = repeat_day.getText().toString();
+            rDays = Integer.parseInt(strRepeat);
+            rDays = rDays * dayInMillis;
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, C.getTimeInMillis(), rDays, pIntent);
+            Toast.makeText(createReminder.this, "Repeating Reminder Set!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP,C.getTimeInMillis(),pIntent);
+            Toast.makeText(createReminder.this, "Reminder Set!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
+
