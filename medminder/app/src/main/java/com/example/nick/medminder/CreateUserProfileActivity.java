@@ -1,14 +1,19 @@
 package com.example.nick.medminder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 public class CreateUserProfileActivity extends AppCompatActivity {
 
@@ -41,19 +46,19 @@ public class CreateUserProfileActivity extends AppCompatActivity {
                 Toast toast;
 
                 if (editNameValue.isEmpty())
-                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Name ", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Name ", LENGTH_LONG);
 
                 else if (editDOBValue.isEmpty())
-                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Date of Birth ", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Date of Birth ", LENGTH_LONG);
 
                 else if (editAddressValue.isEmpty())
-                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Home Address ", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Home Address ", LENGTH_LONG);
 
                 else if (editEnameValue.isEmpty())
-                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Emergency Name ", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Emergency Name ", LENGTH_LONG);
 
                 else if (editEphoneValue.isEmpty())
-                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Emergency Phone ", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Emergency Phone ", LENGTH_LONG);
 
                 else
                 {
@@ -61,7 +66,7 @@ public class CreateUserProfileActivity extends AppCompatActivity {
                     saveTheValues(editNameValue, editDOBValue, editAddressValue, editEnameValue, editEphoneValue);
 
                     focusDisable();
-                    toast = Toast.makeText(getApplicationContext(), "Profile Updated! :)" , Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getApplicationContext(), "Profile Updated! :)" , LENGTH_LONG);
                 }
 
                 toast.show();
@@ -123,5 +128,13 @@ public class CreateUserProfileActivity extends AppCompatActivity {
         editAddress.setFocusable(false);
         editEname.setFocusable(false);
         editEphone.setFocusable(false);
+    }
+
+
+
+
+    public void hidekeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

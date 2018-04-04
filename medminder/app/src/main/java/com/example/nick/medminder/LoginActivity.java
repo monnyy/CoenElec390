@@ -1,21 +1,17 @@
 package com.example.nick.medminder;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.Calendar;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -45,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         userName = (EditText) findViewById(R.id.user_name);
         FilterArrayAge[0] = new InputFilter.LengthFilter(maxLengths[0]);
         userName.setFilters(FilterArrayAge);
+
 
         passWord = (EditText) findViewById(R.id.user_pwd);
         FilterArrayID[0] = new InputFilter.LengthFilter(maxLengths[1]);
@@ -82,8 +79,16 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
+    public void hidekeyboard1(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+
+    /*
     private void alarmSet()
     {
         Intent intent = new Intent(this, NotificationTrigger.class);
@@ -99,5 +104,5 @@ public class LoginActivity extends AppCompatActivity {
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000*60*60*24, pIntent);
         Toast.makeText(LoginActivity.this, "Alarm Set", Toast.LENGTH_LONG).show();
-    }
+    }*/
 }
