@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.nick.medminder">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,8 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".viewReminder" />
-        <activity android:name="com.example.nick.medminder.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,29 +31,59 @@
         </activity>
 
         <activity
-            android:name="com.example.nick.medminder.CreateUserProfileActivity"
+            android:name=".CreateUserProfileActivity"
             android:label="Create/Edit Profile"
-            android:parentActivityName="com.example.nick.medminder.splash">
-        </activity>
-
+            android:parentActivityName=".splash" />
         <activity
-            android:name="com.example.nick.medminder.splash"
+            android:name=".splash"
             android:label="My Profile"
-            android:parentActivityName="com.example.nick.medminder.LoginActivity">
-        </activity>
+            android:parentActivityName=".LoginActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".createReminder"
+            android:label="Create Reminder"
+            android:parentActivityName=".splash" />
 
         <activity
-            android:name="com.example.nick.medminder.createReminder"
-            android:label="Create Reminder"
-            android:parentActivityName="com.example.nick.medminder.splash">
+            android:name=".MainActivity"
+            android:label="My Reminder(s)"
+            android:parentActivityName=".splash" />
+
+        <activity android:name=".AddReminderActivity"
+            android:label="@string/title_activity_add_reminder"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <!--meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /-->
         </activity>
+
+
+        <provider
+            android:name=".data.AlarmReminderProvider"
+            android:exported="false"
+            android:authorities="com.example.nick.medminder" />
 
         <service
+            android:name=".reminder.ReminderAlarmService"
+            android:exported="false"
+            android:enabled="true"/>
+
+        <!--service
             android:name=".NotificationTrigger"
-            android:enabled="true">
-        </service>
+            android:enabled="true"></service>
 
+        <receiver android:name=".Alarm_reciver" />
+
+        <service
+            android:name=".RingtonePlayserives"
+            android:enabled="true"></service>
+
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity-->
     </application>
-
 
 </manifest>
