@@ -13,8 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
+        android:contentDescription="@string/app_logo"
         app:srcCompat="@drawable/logo" />
-    <![CDATA[]]>
 
     <TextView
         android:id="@+id/welcome_text"
@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
         android:fontFamily="cursive"
-        android:text="| Welcome |"
+        android:text="@string/welcome"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#fff"
@@ -43,7 +43,7 @@
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
         android:fontFamily="casual"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
         android:textAppearance="@android:style/TextAppearance.Widget.EditText"
@@ -51,7 +51,7 @@
         android:textColorHint="@android:color/background_light"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_gravity="start" />
+        android:layout_gravity="start" android:drawableStart="@drawable/ic_action_user" />
 
     <EditText
         android:id="@+id/user_pwd"
@@ -64,7 +64,7 @@
         android:drawableLeft="@drawable/ic_action_pass"
         android:ems="10"
         android:fontFamily="casual"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="numberPassword"
         android:numeric="integer|decimal"
         android:password="true"
@@ -74,7 +74,7 @@
         android:textColorHint="@android:color/background_light"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_gravity="start" />
+        android:layout_gravity="start" android:drawableStart="@drawable/ic_action_pass" />
 
     <Button
         android:id="@+id/login_button"
@@ -86,7 +86,7 @@
         android:layout_marginTop="29dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="casual"
-        android:text="Login"
+        android:text="@string/login"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
