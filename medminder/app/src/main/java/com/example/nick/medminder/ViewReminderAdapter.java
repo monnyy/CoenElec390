@@ -20,12 +20,13 @@ import java.util.List;
 
 public class ViewReminderAdapter extends ArrayAdapter {
     List list = new ArrayList();
+    String A;
     public ViewReminderAdapter(@NonNull Context context, int resource) {
         super(context, resource);
     }
 
     static class LayoutHandler{
-        TextView name,time,date,repeat;
+        TextView name,time,date,repeat,active;
 
 
     }
@@ -52,31 +53,37 @@ public class ViewReminderAdapter extends ArrayAdapter {
         View row = convertView;
         LayoutHandler layoutHandler;
         ViewReminderProvider viewReminderProvider = (ViewReminderProvider) this.getItem(position);
-        String a = viewReminderProvider.getActive();
-            if (row == null) {
+        if (row == null) {
 
-                LayoutInflater layoutInflater = (LayoutInflater) this.getContext()
-                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater) this.getContext()
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                row = layoutInflater.inflate(R.layout.viewreminder_items, parent, false);
-                layoutHandler = new LayoutHandler();
-                layoutHandler.name = (TextView) row.findViewById(R.id.view_reminders_MN);
-                layoutHandler.date = (TextView) row.findViewById(R.id.view_reminders_MD);
-                layoutHandler.time = (TextView) row.findViewById(R.id.view_reminders_MT);
-                layoutHandler.repeat = (TextView) row.findViewById(R.id.view_reminders_MR);
-                row.setTag(layoutHandler);
-            } else {
-                layoutHandler = (LayoutHandler) row.getTag();
+            row = layoutInflater.inflate(R.layout.viewreminder_items, parent, false);
+            layoutHandler = new LayoutHandler();
+            layoutHandler.name = (TextView) row.findViewById(R.id.view_reminders_MN);
+            layoutHandler.date = (TextView) row.findViewById(R.id.view_reminders_MD);
+            layoutHandler.time = (TextView) row.findViewById(R.id.view_reminders_MT);
+            layoutHandler.repeat = (TextView) row.findViewById(R.id.view_reminders_MR);
+            layoutHandler.active = (TextView) row.findViewById(R.id.view_reminders_AT);
+            row.setTag(layoutHandler);
+        } else {
+            layoutHandler = (LayoutHandler) row.getTag();
 
-            }
+        }
 
-            layoutHandler.name.setText("Medicine: " + viewReminderProvider.getMedicationname());
-            layoutHandler.time.setText("Time: " + viewReminderProvider.getTime());
-            layoutHandler.date.setText("Date: " + viewReminderProvider.getDate());
-            layoutHandler.repeat.setText("Repeat Every" + viewReminderProvider.getRepeatNo() + " "
-                    + viewReminderProvider.getRepatType());
+        layoutHandler.name.setText("Medicine: " + viewReminderProvider.getMedicationname());
+        layoutHandler.time.setText("Time: " + viewReminderProvider.getTime());
+        layoutHandler.date.setText("Date: " + viewReminderProvider.getDate());
+       layoutHandler.active.setText("This Reminder Active: " +viewReminderProvider.getActive());
+       if (viewReminderProvider.getRepeat() != null) {
+           if (viewReminderProvider.getRepeat().equals("true")) {
+               layoutHandler.repeat.setText("Repeat Every " + viewReminderProvider.getRepeatNo() + " "
+                       + viewReminderProvider.getRepatType());
 
-
+           } else {
+               layoutHandler.repeat.setText("Repeat off");
+           }
+       }
         return row;
     }
 }

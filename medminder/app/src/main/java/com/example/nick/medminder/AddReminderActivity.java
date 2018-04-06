@@ -130,7 +130,8 @@ public class AddReminderActivity extends AppCompatActivity implements
         mActive = "true";
         mRepeat = "false";
         mRepeatNo = Integer.toString(1);
-        mRepeatType = "Hour";
+        mRepeatType ="hours";
+       
 
         mCalendar = Calendar.getInstance();
         mHour = mCalendar.get(Calendar.HOUR_OF_DAY);
@@ -305,9 +306,13 @@ public class AddReminderActivity extends AppCompatActivity implements
         boolean on = ((Switch) view).isChecked();
         if (on) {
             mRepeat = "true";
+            mRepeatTypeText.setVisibility(View.VISIBLE);
+            mRepeatNoText.setVisibility(View.VISIBLE);
             mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
         } else {
             mRepeat = "false";
+            mRepeatTypeText.setVisibility(View.INVISIBLE);
+            mRepeatNoText.setVisibility(View.INVISIBLE);
             mRepeatText.setText(R.string.repeat_off);
         }
     }
