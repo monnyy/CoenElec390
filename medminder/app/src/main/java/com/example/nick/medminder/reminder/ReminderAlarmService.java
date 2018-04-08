@@ -26,10 +26,14 @@ public class ReminderAlarmService extends IntentService {
     private static final String TAG = ReminderAlarmService.class.getSimpleName();
     private static final String id = "nick_channel_1";
     private static final String name = "nick_1";
+<<<<<<< HEAD
+;    private static final int NOTIFICATION_ID = 42;
+=======
     private static final int NOTIFICATION_ID = 42;
     private static final int FIVE_MIN = 300000;
     private static final int TEN_MIN = 600000;
     private Boolean open = false;
+>>>>>>> gkym_v3
     //This is a deep link intent, and needs the task stack
     public static PendingIntent getReminderPendingIntent(Context context, Uri uri) {
         Intent action = new Intent(context, ReminderAlarmService.class);
@@ -118,6 +122,10 @@ public class ReminderAlarmService extends IntentService {
                     .setPriority(Notification.PRIORITY_HIGH);
         } // else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
+<<<<<<< HEAD
+        Notification notification = builder.build();
+        manager.notify(NOTIFICATION_ID, notification);
+=======
         Stopwatch s = new Stopwatch();
         Notification notification = builder.build();
         manager.notify(NOTIFICATION_ID, notification);
@@ -162,5 +170,6 @@ class Stopwatch {
     public double elapsedTime() {
         long now = System.currentTimeMillis();
         return (now - start);
+>>>>>>> gkym_v3
     }
 }

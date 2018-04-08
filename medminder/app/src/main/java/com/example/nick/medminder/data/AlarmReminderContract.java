@@ -46,3 +46,7 @@ public class AlarmReminderContract {
         return cursor.getString( cursor.getColumnIndex(columnName) );
     }
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> gkym_v3

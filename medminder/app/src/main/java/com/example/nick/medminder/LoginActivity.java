@@ -1,11 +1,17 @@
 package com.example.nick.medminder;
 
+<<<<<<< HEAD
+import android.app.Activity;
+import android.content.Context;
+=======
+>>>>>>> gkym_v3
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -38,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         userName = (EditText) findViewById(R.id.user_name);
         FilterArrayAge[0] = new InputFilter.LengthFilter(maxLengths[0]);
         userName.setFilters(FilterArrayAge);
+
 
         passWord = (EditText) findViewById(R.id.user_pwd);
         FilterArrayID[0] = new InputFilter.LengthFilter(maxLengths[1]);
@@ -75,8 +82,18 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
+<<<<<<< HEAD
+    public void hidekeyboard1(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+
+=======
+>>>>>>> gkym_v3
     /*
     private void alarmSet()
     {

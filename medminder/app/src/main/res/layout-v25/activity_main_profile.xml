@@ -21,7 +21,8 @@
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:textSize="20sp"
-        android:textStyle="bold" android:drawableStart="@drawable/ic_action_edit_profile" />
+        android:textStyle="bold"
+        android:drawableStart="@drawable/ic_action_edit_profile" />
 
     <Button
         android:id="@+id/view_reminders_button"

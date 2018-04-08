@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class splash extends AppCompatActivity {
 
@@ -34,8 +38,8 @@ public class splash extends AppCompatActivity {
             }
         });
 
-        /*
-        btn_view_reminder = (Button) findViewById(R.id.btn_view_reminder);
+
+        btn_view_reminder = (Button) findViewById(R.id.view_reminders_button);
         btn_view_reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,9 +47,10 @@ public class splash extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        */
+
 
         btn_create_reminder = (Button) findViewById(R.id.new_reminder_button);
+        btn_create_reminder.setVisibility(View.INVISIBLE);
         btn_create_reminder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +58,29 @@ public class splash extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.admin_guardian_switch,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.admin:
+                Toast.makeText(this,"Now under user model",Toast.LENGTH_LONG).show();
+                btn_create_reminder.setVisibility(View.INVISIBLE);
+                return true;
+            case R.id.guardian:
+                Toast.makeText(this,"Now under guardian model",Toast.LENGTH_LONG).show();
+                btn_create_reminder.setVisibility(View.VISIBLE);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     protected  void onStart()

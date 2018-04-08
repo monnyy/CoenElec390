@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -29,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".CreateUserProfileActivity"
             android:label="Create/Edit Profile"
@@ -43,11 +45,42 @@
             android:name=".createReminder"
             android:label="Create Reminder"
             android:parentActivityName=".splash" />
+<<<<<<< HEAD
+=======
 
+>>>>>>> gkym_v3
         <activity
             android:name=".MainActivity"
             android:label="My Reminder(s)"
             android:parentActivityName=".splash" />
+<<<<<<< HEAD
+        <activity
+            android:name=".AddReminderActivity"
+            android:label="@string/title_activity_add_reminder"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <!--
+                meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /
+            -->
+        </activity>
+
+        <provider
+            android:name=".data.AlarmReminderProvider"
+            android:authorities="com.example.nick.medminder"
+            android:exported="false" />
+
+        <service
+            android:name=".reminder.ReminderAlarmService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!--
+        service
+=======
 
         <activity android:name=".AddReminderActivity"
             android:label="@string/title_activity_add_reminder"
@@ -71,6 +104,7 @@
             android:enabled="true"/>
 
         <!--service
+>>>>>>> gkym_v3
             android:name=".NotificationTrigger"
             android:enabled="true"></service>
 
@@ -83,7 +117,12 @@
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
+<<<<<<< HEAD
+            android:theme="@style/AppTheme.NoActionBar"></activity
+        -->
+=======
             android:theme="@style/AppTheme.NoActionBar"></activity-->
+>>>>>>> gkym_v3
     </application>
 
 </manifest>

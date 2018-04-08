@@ -1,6 +1,10 @@
 package com.example.nick.medminder.data;
 
 import android.content.Context;
+<<<<<<< HEAD
+import android.database.Cursor;
+=======
+>>>>>>> gkym_v3
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -38,8 +42,33 @@ public class AlarmReminderDbHelper extends SQLiteOpenHelper {
 
     }
 
+<<<<<<< HEAD
+    public Cursor getInformations(SQLiteDatabase sqLiteDatabase){
+        Cursor cursor;
+        String [] projection = {
+                ViewReminderContract.ViewReminderEntry._ID,
+                ViewReminderContract.ViewReminderEntry.KEY_TITLE,
+                ViewReminderContract.ViewReminderEntry.KEY_DATE,
+                ViewReminderContract.ViewReminderEntry.KEY_TIME,
+                ViewReminderContract.ViewReminderEntry.KEY_REPEAT,
+                ViewReminderContract.ViewReminderEntry.KEY_REPEAT_NO,
+                ViewReminderContract.ViewReminderEntry.KEY_REPEAT_TYPE,
+                ViewReminderContract.ViewReminderEntry.KEY_ACTIVE};
+
+
+       cursor = sqLiteDatabase.query(ViewReminderContract.ViewReminderEntry.TABLE_NAME,
+                projection,null,null,null,null,null);
+
+       return cursor;
+    }
+=======
+>>>>>>> gkym_v3
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> gkym_v3
 }

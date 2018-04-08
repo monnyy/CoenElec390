@@ -18,17 +18,30 @@
         android:background="?attr/colorPrimary" /-->
 
     <LinearLayout
+<<<<<<< HEAD
+        android:id="@+id/add_reminder_layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="?android:attr/colorFocusedHighlight"
+        android:orientation="horizontal"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+=======
         android:layout_width="match_parent"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:id="@+id/add_reminder_layout_top"
         android:background="?android:attr/colorFocusedHighlight"
         android:orientation="horizontal"
         android:layout_height="148dp">
+>>>>>>> gkym_v3
 
         <ImageView
             android:id="@+id/login_logo"
             android:layout_width="60dp"
+<<<<<<< HEAD
+            android:layout_height="60dp"
+=======
             android:layout_height="100dp"
+>>>>>>> gkym_v3
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:contentDescription="@string/create_reminder_logo"
@@ -37,11 +50,19 @@
         <EditText
             android:id="@+id/reminder_title"
             android:layout_width="match_parent"
+<<<<<<< HEAD
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="16dp"
+            android:gravity="bottom|left"
+=======
             android:layout_height="140dp"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="16dp"
             android:gravity="top|left"
+>>>>>>> gkym_v3
             android:hint="@string/add_reminder"
             android:inputType="textCapWords|textMultiLine"
             android:lines="4"
@@ -49,7 +70,11 @@
             android:scrollHorizontally="false"
             android:textColor="@android:color/white"
             android:textColorHint="@color/primary_text_disabled_material_dark"
+<<<<<<< HEAD
+            android:textSize="30dp" />
+=======
             android:textSize="25dp" />
+>>>>>>> gkym_v3
 
     </LinearLayout>
 
@@ -64,6 +89,15 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
+<<<<<<< HEAD
+            <RelativeLayout
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:onClick="setDate">
+=======
             <TextView
                 android:layout_width="match_parent"
                 android:layout_marginTop="8dp"
@@ -82,12 +116,81 @@
                 android:id="@+id/date"
                 android:background="?android:attr/selectableItemBackground"
                 android:layout_height="72dp">
+>>>>>>> gkym_v3
 
                 <ImageView
                     android:id="@+id/date_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+<<<<<<< HEAD
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@drawable/ic_view_day_grey600_24dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/date_icon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/date"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/set_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"
+                        android:textSize="30dp" />
+
+                </LinearLayout>
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/starred2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:clickable="true"
+                    android:onClick="selectFab2"
+                    app:fab_size="normal"
+                    fab:fab_colorNormal="@color/colorAccent"
+                    fab:fab_colorPressed="@color/fab_pressed"
+                    fab:fab_icon="@drawable/ic_notifications_on_white_24dp" />
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/starred1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:clickable="true"
+                    android:onClick="selectFab1"
+                    app:fab_size="normal"
+                    fab:fab_colorNormal="@color/colorAccent"
+                    fab:fab_colorPressed="@color/fab_pressed"
+                    fab:fab_icon="@drawable/ic_notifications_off_grey600_24dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:onClick="setTime">
+=======
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
                     android:src="@drawable/ic_view_day_grey600_24dp"
@@ -126,12 +229,41 @@
                 android:id="@+id/time"
                 android:background="?android:attr/selectableItemBackground"
                 android:layout_height="72dp">
+>>>>>>> gkym_v3
 
                 <ImageView
                     android:id="@+id/time_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+<<<<<<< HEAD
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@drawable/ic_access_time_grey600_24dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/time_icon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/set_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textSize="30dp" />
+=======
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
                     android:src="@drawable/ic_access_time_grey600_24dp"
@@ -158,21 +290,57 @@
                         android:textSize="15dp"
                         android:textColor="@color/abc_secondary_text_material_dark"
                         android:layout_height="wrap_content"/>
+>>>>>>> gkym_v3
 
                 </LinearLayout>
 
             </RelativeLayout>
 
             <RelativeLayout
+<<<<<<< HEAD
+                android:id="@+id/repeat"
+                android:layout_width="match_parent"
+                android:layout_height="82dp">
+=======
                 android:layout_width="match_parent"
                 android:id="@+id/repeat"
                 android:layout_height="72dp">
+>>>>>>> gkym_v3
 
                 <ImageView
                     android:id="@+id/repeat_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+<<<<<<< HEAD
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@drawable/ic_sync_grey600_24dp" />
+
+                <LinearLayout
+                    android:id="@+id/repeat_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/repeat_icon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/repeat_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/repeat"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/set_repeat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textSize="30dp" />
+=======
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
                     android:src="@drawable/ic_sync_grey600_24dp"
@@ -200,6 +368,7 @@
                         android:textSize="15dp"
                         android:textColor="@color/abc_secondary_text_material_dark"
                         android:layout_height="wrap_content"/>
+>>>>>>> gkym_v3
 
                 </LinearLayout>
 
@@ -207,6 +376,16 @@
                     android:id="@+id/repeat_switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="16dp"
+                    android:checked="false"
+                    android:onClick="onSwitchRepeat"
+                    android:textOff="Off"
+                    android:textOn="On" />
+=======
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
@@ -215,22 +394,60 @@
                     android:checked="true"
                     android:textOn="On"
                     android:textOff="Off"/>
+>>>>>>> gkym_v3
 
             </RelativeLayout>
 
             <RelativeLayout
+<<<<<<< HEAD
+                android:id="@+id/RepeatNo"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:onClick="setRepeatNo">
+=======
                 android:layout_width="match_parent"
                 android:id="@+id/RepeatNo"
                 android:clickable="true"
                 android:onClick="setRepeatNo"
                 android:background="?android:attr/selectableItemBackground"
                 android:layout_height="72dp">
+>>>>>>> gkym_v3
 
                 <ImageView
                     android:id="@+id/repeat_no_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+<<<<<<< HEAD
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@drawable/ic_unfold_more_grey600_24dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/repeat_no_icon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/repeat_no_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/repeat_no"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/set_repeat_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textSize="30dp" />
+=======
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
                     android:src="@drawable/ic_unfold_more_grey600_24dp"
@@ -257,24 +474,62 @@
                         android:textSize="15dp"
                         android:textColor="@color/abc_secondary_text_material_dark"
                         android:layout_height="wrap_content"/>
+>>>>>>> gkym_v3
 
                 </LinearLayout>
 
             </RelativeLayout>
 
             <RelativeLayout
+<<<<<<< HEAD
+                android:id="@+id/RepeatType"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:onClick="selectRepeatType">
+=======
                 android:layout_width="match_parent"
                 android:id="@+id/RepeatType"
                 android:clickable="true"
                 android:onClick="selectRepeatType"
                 android:background="?android:attr/selectableItemBackground"
                 android:layout_height="72dp">
+>>>>>>> gkym_v3
 
                 <ImageView
                     android:id="@+id/repeat_type_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+<<<<<<< HEAD
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@drawable/ic_subject_grey600_24dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/repeat_type_icon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/repeat_type_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/repeat_type"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/set_repeat_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textSize="30dp" />
+=======
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
                     android:src="@drawable/ic_subject_grey600_24dp"
@@ -301,6 +556,7 @@
                         android:textSize="15dp"
                         android:textColor="@color/abc_secondary_text_material_dark"
                         android:layout_height="wrap_content"/>
+>>>>>>> gkym_v3
 
                 </LinearLayout>
 
@@ -316,6 +572,8 @@
         android:layout_below="@+id/add_reminder_layout_top"
         android:background="@drawable/toolbar_dropshadow" />
 
+<<<<<<< HEAD
+=======
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/starred1"
         android:layout_width="wrap_content"
@@ -346,4 +604,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginRight="8dp"/>
 
+>>>>>>> gkym_v3
 </RelativeLayout>
