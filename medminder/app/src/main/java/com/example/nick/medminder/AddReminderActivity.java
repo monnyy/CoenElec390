@@ -128,10 +128,16 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         // Initialize default values
         mActive = "true";
+<<<<<<< HEAD
         mRepeat = "false";
         mRepeatNo = Integer.toString(1);
         mRepeatType ="hours";
        
+=======
+        mRepeat = "true";
+        mRepeatNo = Integer.toString(1);
+        mRepeatType = "Hour";
+>>>>>>> gkym_v3
 
         mCalendar = Calendar.getInstance();
         mHour = mCalendar.get(Calendar.HOUR_OF_DAY);
@@ -306,6 +312,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         boolean on = ((Switch) view).isChecked();
         if (on) {
             mRepeat = "true";
+<<<<<<< HEAD
             mRepeatTypeText.setVisibility(View.VISIBLE);
             mRepeatNoText.setVisibility(View.VISIBLE);
             mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
@@ -313,6 +320,11 @@ public class AddReminderActivity extends AppCompatActivity implements
             mRepeat = "false";
             mRepeatTypeText.setVisibility(View.INVISIBLE);
             mRepeatNoText.setVisibility(View.INVISIBLE);
+=======
+            mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+        } else {
+            mRepeat = "false";
+>>>>>>> gkym_v3
             mRepeatText.setText(R.string.repeat_off);
         }
     }
@@ -411,12 +423,16 @@ public class AddReminderActivity extends AppCompatActivity implements
                 if (mTitleText.getText().toString().length() == 0){
                     mTitleText.setError("Reminder Title cannot be blank!");
                 }
+<<<<<<< HEAD
                 else if(mDateText.getText().toString().length() == 0){
                     Toast.makeText(this,"please fill in the date",Toast.LENGTH_LONG).show();
             }
                 else if(mTimeText.getText().toString().length()==0){
                     Toast.makeText(this,"please fill the time",Toast.LENGTH_LONG).show();
                 }
+=======
+
+>>>>>>> gkym_v3
                 else {
                     saveReminder();
                     finish();

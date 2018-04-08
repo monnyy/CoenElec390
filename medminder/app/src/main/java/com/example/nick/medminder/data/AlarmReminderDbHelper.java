@@ -1,7 +1,10 @@
 package com.example.nick.medminder.data;
 
 import android.content.Context;
+<<<<<<< HEAD
 import android.database.Cursor;
+=======
+>>>>>>> gkym_v3
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -39,6 +42,7 @@ public class AlarmReminderDbHelper extends SQLiteOpenHelper {
 
     }
 
+<<<<<<< HEAD
     public Cursor getInformations(SQLiteDatabase sqLiteDatabase){
         Cursor cursor;
         String [] projection = {
@@ -57,9 +61,14 @@ public class AlarmReminderDbHelper extends SQLiteOpenHelper {
 
        return cursor;
     }
+=======
+>>>>>>> gkym_v3
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> gkym_v3
 }

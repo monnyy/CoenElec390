@@ -11,6 +11,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -41,10 +45,15 @@
             android:name=".createReminder"
             android:label="Create Reminder"
             android:parentActivityName=".splash" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> gkym_v3
         <activity
             android:name=".MainActivity"
             android:label="My Reminder(s)"
             android:parentActivityName=".splash" />
+<<<<<<< HEAD
         <activity
             android:name=".AddReminderActivity"
             android:label="@string/title_activity_add_reminder"
@@ -71,6 +80,31 @@
 
         <!--
         service
+=======
+
+        <activity android:name=".AddReminderActivity"
+            android:label="@string/title_activity_add_reminder"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <!--meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" /-->
+        </activity>
+
+
+        <provider
+            android:name=".data.AlarmReminderProvider"
+            android:exported="false"
+            android:authorities="com.example.nick.medminder" />
+
+        <service
+            android:name=".reminder.ReminderAlarmService"
+            android:exported="false"
+            android:enabled="true"/>
+
+        <!--service
+>>>>>>> gkym_v3
             android:name=".NotificationTrigger"
             android:enabled="true"></service>
 
@@ -83,8 +117,12 @@
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"></activity
         -->
+=======
+            android:theme="@style/AppTheme.NoActionBar"></activity-->
+>>>>>>> gkym_v3
     </application>
 
 </manifest>

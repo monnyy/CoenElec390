@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffd78c">
+
+
+    <EditText
+        android:id="@+id/repeat_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/create_time"
+        android:layout_alignRight="@+id/create_time"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@+id/repeat_switch"
+        android:layout_toRightOf="@+id/repeat_switch"
+        android:ems="3"
+        android:gravity="center"
+        android:hint="Every X Day(s)"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="30sp"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/createReminderBTN"
+        style="@android:style/Widget.Button.Toggle"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="casual"
+        android:text="CREATE"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Switch
+        android:id="@+id/repeat_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/setRepeat"
+        android:layout_alignBottom="@+id/setRepeat"
+        android:layout_alignLeft="@+id/create_time"
+        android:layout_alignStart="@+id/create_time"
+        android:checked="false"
+        android:onClick="setRepeat"
+        android:textOff="Off"
+        android:textOn="On" />
+
+    <TextView
+        android:id="@+id/setRepeat"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/setTimeTXT"
+        android:layout_alignStart="@+id/setTimeTXT"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:fontFamily="casual"
+        android:hint="Repeat : "
+        android:onClick="setdate"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/create_time"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/setTimeTXT"
+        android:layout_alignBottom="@+id/setTimeTXT"
+        android:layout_alignLeft="@+id/create_date"
+        android:layout_alignStart="@+id/create_date"
+        android:clickable="true"
+        android:fontFamily="casual"
+        android:hint="@string/setDate"
+        android:onClick="setTime"
+        android:text="Tap to Set Time"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/setTimeTXT"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/setDateTXT"
+        android:layout_alignStart="@+id/setDateTXT"
+        android:layout_below="@+id/setDateTXT"
+        android:layout_marginTop="31dp"
+        android:clickable="true"
+        android:fontFamily="casual"
+        android:hint="Time : "
+        android:onClick="setTime"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/setDateTXT"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/login_logo"
+        android:layout_alignRight="@+id/login_logo"
+        android:layout_below="@+id/login_logo"
+        android:clickable="true"
+        android:fontFamily="casual"
+        android:hint="Date : "
+        android:onClick="setDate"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/medName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="start"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginTop="19dp"
+        android:contentDescription="@string/my_name"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:drawableLeft="@drawable/ic_action_user"
+        android:drawableStart="@drawable/ic_action_user"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:hint="Medication Name"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textAppearance="@android:style/TextAppearance.Widget.EditText"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:contentDescription="@string/create_reminder_logo"
+        app:srcCompat="@drawable/medication_name_new" />
+
+    <TextView
+        android:id="@+id/create_date"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/setDateTXT"
+        android:layout_alignBottom="@+id/setDateTXT"
+        android:layout_alignLeft="@+id/medName"
+        android:layout_alignStart="@+id/medName"
+        android:clickable="true"
+        android:fontFamily="casual"
+        android:hint="@string/setDate"
+        android:onClick="setDate"
+        android:text="Tap to Set Date"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+
+</RelativeLayout>

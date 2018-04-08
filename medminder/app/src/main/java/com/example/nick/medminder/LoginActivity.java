@@ -1,7 +1,10 @@
 package com.example.nick.medminder;
 
+<<<<<<< HEAD
 import android.app.Activity;
 import android.content.Context;
+=======
+>>>>>>> gkym_v3
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -82,12 +85,15 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
     public void hidekeyboard1(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 
+=======
+>>>>>>> gkym_v3
     /*
     private void alarmSet()
     {
