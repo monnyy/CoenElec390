@@ -7,6 +7,7 @@
 //import android.content.Intent;
 //import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
+//import android.view.MenuItem;
 //import android.view.View;
 //import android.widget.Button;
 //import android.widget.DatePicker;
@@ -45,7 +46,7 @@
 //
 //        repeat = false;
 //        final Calendar calendar = Calendar.getInstance();
-//        final Intent intent = new Intent(createReminder.this, NotificationTrigger.class);
+//       // final Intent intent = new Intent(createReminder.this, NotificationTrigger.class);
 //
 //        repeat_switch.isChecked();
 //

@@ -15,8 +15,12 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,12 +46,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-//        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(mToolbar);
-//        mToolbar.setTitle(R.string.app_name);
-
+        setContentView(R.layout.activity_view_reminder);
 
         reminderListView = (ListView) findViewById(R.id.list);
         reminderText = (TextView) findViewById(R.id.reminderText);
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mCursorAdapter = new AlarmCursorAdapter(this, null);
         reminderListView.setAdapter(mCursorAdapter);
 
-        reminderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*reminderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
@@ -73,16 +72,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 startActivity(intent);
 
             }
-        });
+        });*/
 
 
         mAddReminderButton = (FloatingActionButton) findViewById(R.id.fab);
+        mAddReminderButton.setVisibility(View.INVISIBLE);
 
         mAddReminderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(v.getContext(), AddReminderActivity.class);
-                //startActivity(intent);
                 addReminderTitle();
             }
         });
@@ -90,6 +88,49 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         getSupportLoaderManager().initLoader(VEHICLE_LOADER, null, this);
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.priv_switch,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.admin:
+                Toast.makeText(this,"User Mode Enabled",Toast.LENGTH_LONG).show();
+                mAddReminderButton.setVisibility(View.INVISIBLE);
+                reminderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {}
+                });
+                return true;
+            case R.id.guardian:
+                Toast.makeText(this,"Admin Privileges Activated",Toast.LENGTH_LONG).show();
+                mAddReminderButton.setVisibility(View.VISIBLE);
+                reminderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                        Intent intent = new Intent(MainActivity.this, AddReminderActivity.class);
+
+                        Uri currentVehicleUri = ContentUris.withAppendedId(AlarmReminderContract.AlarmReminderEntry.CONTENT_URI, id);
+
+                        // Set the URI on the data field of the intent
+                        intent.setData(currentVehicleUri);
+
+                        startActivity(intent);
+
+                    }
+                });
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -135,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void addReminderTitle(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Set Reminder Title");
+        builder.setTitle("Set Medication Name");
 
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -159,9 +200,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
                 if (newUri == null) {
-                    Toast.makeText(getApplicationContext(), "Setting Reminder Title failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Setting Medication name failed", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Title set successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Medication name set successfully", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -175,6 +216,39 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         builder.show();
     }
+
+//    public boolean adminPassword(){
+//
+//        final boolean fuckthisshit;
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Please Enter Password");
+//
+//        final EditText input = new EditText(this);
+//        input.setInputType(InputType.TYPE_CLASS_TEXT);
+//        builder.setView(input);
+//
+//        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                if (input.getText().toString().isEmpty()){
+//
+//                }
+//
+//                if (input.getText().toString().equals("admin")) {
+//                    fuckthisshit = true;
+//                }
+//
+//            }
+//        });
+//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.cancel();
+//            }
+//        });
+//
+//        builder.show();
+//    }
 
     public void restartLoader(){
         getSupportLoaderManager().restartLoader(VEHICLE_LOADER, null, this);

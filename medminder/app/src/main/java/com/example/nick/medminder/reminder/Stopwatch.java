@@ -1,7 +1,7 @@
 package com.example.nick.medminder.reminder;
 
 /**
- * Created by Nick on 2018-04-09.
+ * Created by Nick.
  */
 
 class Stopwatch {

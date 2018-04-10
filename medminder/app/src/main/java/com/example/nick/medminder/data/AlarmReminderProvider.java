@@ -12,7 +12,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 /**
- * Created by delaroy on 10/25/17.
+ * SOURCE: delaroy
  */
 
 public class AlarmReminderProvider extends ContentProvider {

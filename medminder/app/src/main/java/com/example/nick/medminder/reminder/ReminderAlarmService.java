@@ -11,6 +11,7 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -31,7 +32,7 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * Created by delaroy on 9/22/17.
+ * Created by Nick.
  */
 
 public class ReminderAlarmService extends IntentService {
@@ -45,17 +46,6 @@ public class ReminderAlarmService extends IntentService {
     private Boolean open = false;
     private String openData;
     private BluetoothArduinoHelper btArduino;
-
-    BluetoothAdapter bluetoothAdapter;
-    BluetoothSocket socket;
-    BluetoothDevice device;
-    OutputStream oStream;
-    InputStream iStream;
-    Thread t;
-    byte[] readBuffer;
-    int readBufferPosition;
-    int counter;
-    volatile boolean stopWorker;
 
     //This is a deep link intent, and needs the task stack
     public static PendingIntent getReminderPendingIntent(Context context, Uri uri) {
@@ -148,22 +138,32 @@ public class ReminderAlarmService extends IntentService {
         Notification notification = builder.build();
         manager.notify(NOTIFICATION_ID, notification);
         btArduino = BluetoothArduinoHelper.getInstance(DEVICE_NAME);
-        try {
-            btArduino.Connect();
-        } catch (Exception ex) {
-            Log.d(TAG, "\t\tCannot make connection!");
+        Stopwatch connectionfail = new Stopwatch();
+        while(!btArduino.isConnected()) {
+            if(connectionfail.elapsedTime() > 30000 && connectionfail.elapsedTime() < 40000) {
+                builder.setContentText("Error! Please make sure the Bluetooth connection has been established to the box!");
+                notification = builder.build();
+                manager.notify(NOTIFICATION_ID, notification);
+            }
+            try {
+                btArduino.Connect();
+            } catch (Exception ex) {
+                Log.d(TAG, "\t\tCannot make connection!");
+            }
         }
         Stopwatch s = new Stopwatch();
         int notif_counter_A = 0, notif_counter_B = 0;
-        while (true) {
+        MediaPlayer mediaPlayer;
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound);
+        mediaPlayer.start();
+        while(true) {
 
             try {
                 openData = btArduino.getStatus();
-            } catch (IOException ex) {
-            }
-            //openData = btArduino.getLastMessage();
+            } catch (IOException ex) {}
 
             if (openData.equals("0") && s.elapsedTime() > 5000) {
+                mediaPlayer.stop();
                 builder.setContentText("Box opened! Reminder dismissed.");
                 notification = builder.build();
                 manager.notify(NOTIFICATION_ID + 1, notification);
@@ -177,6 +177,7 @@ public class ReminderAlarmService extends IntentService {
                 }
             }
             if (openData.equals("1") && s.elapsedTime() > 20000) {
+                mediaPlayer.stop();
                 for (; notif_counter_B < 1; notif_counter_B++) {
                     builder.setContentText("Tertiary Reminder, Emergency contact will be notified.");
                     notification = builder.build();

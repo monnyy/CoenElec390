@@ -6,8 +6,9 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
- * Created by delaroy on 10/25/17.
+ * SOURCE: delaroy
  */
+
 public class AlarmReminderContract {
 
     private AlarmReminderContract() {}

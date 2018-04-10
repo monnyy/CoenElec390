@@ -19,7 +19,7 @@
     <string name="title_activity_view_reminder">viewReminder</string>
     <string name="create_reminder_logo">The logo for the reminder page</string>
     <string name="edit_profile">EDIT PROFILE</string>
-    <string name="view_my_reminders">VIEW MY REMINDERS</string>
+    <string name="view_my_reminders">MANAGE MY REMINDERS</string>
     <string name="create_a_reminder">CREATE A REMINDER</string>
     <string name="profile_picture">profile picture</string>
     <string name="username">Username</string>
@@ -80,5 +80,5 @@
     <string name="editor_update_reminder_failed">Error with updating reminder</string>
 
     <string name="reminder_title">Time to take your medication!</string>
->>>>>>> a8bf720f09cd927bd829c75edd58cf49ed887621
+    >>>>>>> a8bf720f09cd927bd829c75edd58cf49ed887621
 </resources>

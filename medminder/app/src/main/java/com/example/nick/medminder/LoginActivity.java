@@ -1,11 +1,15 @@
 package com.example.nick.medminder;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     protected static final String TAG = "Login Activity"; //to log the activity for debugging
     protected Button loginButton = null;
     protected EditText passWord = null;
+    String passwordSP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,13 @@ public class LoginActivity extends AppCompatActivity {
         //alarmSet();
         Log.d(TAG, "The onCreate() event");
         setupUI();
+    }
+
+    protected void onStart() {
+        super.onStart();
+
+        SharedPreferences Prefs = getSharedPreferences("ProfilePreference", Context.MODE_PRIVATE);
+        passwordSP = Prefs.getString("loginPassword", "1234");
     }
 
     protected void setupUI(){
@@ -49,18 +61,23 @@ public class LoginActivity extends AppCompatActivity {
 
                 Toast toast = null;
 
-                if (passValue.isEmpty() || !passValue.equals("1234"))
+                if (passValue.isEmpty() || !passValue.equals(passwordSP))
                 {
-                    toast = Toast.makeText(getApplicationContext(), ":( Invalid Input: Password ", Toast.LENGTH_LONG);
+                    toast = Toast.makeText(getApplicationContext(), "Incorrect PIN", Toast.LENGTH_LONG);
                     toast.show();
                 }
 
-                if (passValue.equals("1234"))
+                if (passValue.equals(passwordSP))
                 {
                     Intent intent = new Intent(LoginActivity.this, splash.class);
                     startActivity(intent);
                 }
             }
         });
+    }
+
+    public void hidekeyboardlogin(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

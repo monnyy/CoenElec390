@@ -35,7 +35,7 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import java.util.Calendar;
 
 /**
- * Created by delaroy on 10/26/17.
+ * SOURCE: delaroy
  */
 
 public class AddReminderActivity extends AppCompatActivity implements
@@ -128,7 +128,7 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         // Initialize default values
         mActive = "true";
-        mRepeat = "true";
+        mRepeat = "false";
         mRepeatNo = Integer.toString(1);
         mRepeatType = "Hour";
 
@@ -305,9 +305,13 @@ public class AddReminderActivity extends AppCompatActivity implements
         boolean on = ((Switch) view).isChecked();
         if (on) {
             mRepeat = "true";
+            mRepeatTypeText.setVisibility(View.VISIBLE);
+            mRepeatNoText.setVisibility(View.VISIBLE);
             mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
         } else {
             mRepeat = "false";
+            mRepeatTypeText.setVisibility(View.INVISIBLE);
+            mRepeatNoText.setVisibility(View.INVISIBLE);
             mRepeatText.setText(R.string.repeat_off);
         }
     }
@@ -601,13 +605,13 @@ public class AddReminderActivity extends AppCompatActivity implements
                 new AlarmScheduler().setAlarm(getApplicationContext(), selectedTimestamp, mCurrentReminderUri);
             }
 
-            Toast.makeText(this, "Alarm time is " + selectedTimestamp,
-                    Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Alarm time is " + selectedTimestamp,
+//                    Toast.LENGTH_LONG).show();
         }
 
         // Create toast to confirm new reminder
-        Toast.makeText(getApplicationContext(), "Saved",
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Saved",
+//                Toast.LENGTH_SHORT).show();
 
     }
 

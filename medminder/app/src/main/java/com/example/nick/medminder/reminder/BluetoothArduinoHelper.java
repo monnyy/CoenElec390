@@ -1,6 +1,7 @@
 package com.example.nick.medminder.reminder;
 
 /*
+    SOURCE
     This file is part of .PNG Arduino Framework.
 
     .PNG Arduino Framework is free software: you can redistribute it and/or modify
@@ -126,6 +127,10 @@ public class BluetoothArduinoHelper extends Thread {
 
         LogMessage("Connected! " + mBlueAdapter.getName());
         return true;
+    }
+
+    public boolean isConnected() {
+        return connected;
     }
 
     /**
