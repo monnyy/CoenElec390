@@ -17,6 +17,7 @@ package com.example.nick.medminder.reminder;
     along with .PNG Arduino Framework.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class BluetoothArduinoHelper extends Thread {
     private boolean robotFound = false;
     private boolean connected = false;
 
-    private String robotName = "SH-HC-08";
+    private String robotName;
     private List<String> mMessages = new ArrayList<String>();
     private final String TAG = "BluetoothConnector";
     private char DELIMITER = '\n';
@@ -250,5 +251,15 @@ public class BluetoothArduinoHelper extends Thread {
         mOut.close();
         mIn.close();
         mBlueSocket.close();
+    }
+
+    private byte[] buffer = new byte[1024];
+    private int bytes;
+
+    public String getStatus() throws IOException {
+        bytes = mIn.read(buffer);
+        String incomingMessage = new String(buffer, 0, bytes);
+        Log.d(TAG, "InputStream: " + incomingMessage);
+        return incomingMessage;
     }
 }

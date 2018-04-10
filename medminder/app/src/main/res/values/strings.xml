@@ -24,7 +24,7 @@
     <string name="profile_picture">profile picture</string>
     <string name="username">Username</string>
     <string name="welcome">| Welcome |</string>
-    <string name="password">Password</string>
+    <string name="password">Please Enter PIN</string>
     <string name="login">Login</string>
     <string name="app_logo">App logo</string>
     <string name="guardian_s_name">Guardian\'s Name</string>

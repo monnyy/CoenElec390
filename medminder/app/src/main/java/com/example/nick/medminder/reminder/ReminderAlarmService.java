@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.nick.medminder.AddReminderActivity;
@@ -40,7 +41,7 @@ public class ReminderAlarmService extends IntentService {
     private static final int NOTIFICATION_ID = 42;
     private static final int FIVE_MIN = 300000;
     private static final int TEN_MIN = 600000;
-    private static final String DEVICE_NAME = "SH-HC-08";
+    private static final String DEVICE_NAME = "HC-05";
     private Boolean open = false;
     private String openData;
     private BluetoothArduinoHelper btArduino;
@@ -144,133 +145,48 @@ public class ReminderAlarmService extends IntentService {
                     .setPriority(Notification.PRIORITY_HIGH);
         } // else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
+        Notification notification = builder.build();
+        manager.notify(NOTIFICATION_ID, notification);
         btArduino = BluetoothArduinoHelper.getInstance(DEVICE_NAME);
         try {
             btArduino.Connect();
-        } catch(Exception ex) {
-            openData = "FUCK";
+        } catch (Exception ex) {
+            Log.d(TAG, "\t\tCannot make connection!");
         }
         Stopwatch s = new Stopwatch();
-        Notification notification = builder.build();
-        manager.notify(NOTIFICATION_ID, notification);
         int notif_counter_A = 0, notif_counter_B = 0;
-        while(true) {
+        while (true) {
 
+            try {
+                openData = btArduino.getStatus();
+            } catch (IOException ex) {
+            }
             //openData = btArduino.getLastMessage();
 
-            if(open) {
-                builder.setContentText("good job");
+            if (openData.equals("0") && s.elapsedTime() > 5000) {
+                builder.setContentText("Box opened! Reminder dismissed.");
                 notification = builder.build();
                 manager.notify(NOTIFICATION_ID + 1, notification);
-                try {
-                    btArduino.Disconnect();
-                } catch (IOException ex) {}
                 break;
             }
-            if(!open && s.elapsedTime() > 10000) {
-                for(; notif_counter_A < 1; notif_counter_A++) {
-                    builder.setContentText("2nd chance!   " + openData);
+            if (openData.equals("1") && s.elapsedTime() > 10000) {
+                for (; notif_counter_A < 1; notif_counter_A++) {
+                    builder.setContentText("Secondary Reminder.");
                     notification = builder.build();
                     manager.notify(NOTIFICATION_ID + 2, notification);
                 }
             }
-            if(!open && s.elapsedTime() > 20000) {
-                for(; notif_counter_B < 1; notif_counter_B++) {
-                    builder.setContentText("EMERGENCY");
+            if (openData.equals("1") && s.elapsedTime() > 20000) {
+                for (; notif_counter_B < 1; notif_counter_B++) {
+                    builder.setContentText("Tertiary Reminder, Emergency contact will be notified.");
                     notification = builder.build();
                     manager.notify(NOTIFICATION_ID + 3, notification);
                 }
+                //send text
                 notif_counter_A = 0;
                 notif_counter_B = 0;
-                try {
-                    btArduino.Disconnect();
-                } catch (IOException ex) {}
                 break;
             }
         }
-    }
-
-    void findBT() {
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if(bluetoothAdapter == null) {
-            Toast.makeText(this, "No BT detected", Toast.LENGTH_SHORT).show();
-        }
-        if(!bluetoothAdapter.isEnabled()) {
-            Intent enableBT = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivity(enableBT);
-        }
-        Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
-        if(pairedDevices.size() > 0) {
-            for(BluetoothDevice btDevice: pairedDevices) {
-                if(btDevice.getName().equals("SH-HC-08")) {
-                    device = btDevice;
-                    break;
-                }
-            }
-        }
-    }
-
-    void openBT() throws IOException {
-        UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-        socket = device.createRfcommSocketToServiceRecord(uuid);
-        socket.connect();
-        oStream = socket.getOutputStream();
-        iStream = socket.getInputStream();
-        listenForData();
-    }
-
-    void listenForData() {
-        final Handler handler = new Handler();
-        final byte delimiter = 10;
-        stopWorker = false;
-        readBufferPosition = 0;
-        readBuffer = new byte[1024];
-        t = new Thread(new Runnable() {
-            public void run() {
-                while(!Thread.currentThread().isInterrupted() && !stopWorker) {
-                    try {
-                        int bytesAvail = iStream.available();
-                        if(bytesAvail > 0) {
-                           byte[] packetBytes = new byte[bytesAvail];
-                           iStream.read(packetBytes);
-                           for(int i = 0; i < bytesAvail; i++) {
-                               byte b = packetBytes[i];
-                               if (b == delimiter) {
-                                   byte[] encodedBytes = new byte[readBufferPosition];
-                                   System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
-                                   final String data = new String(encodedBytes, "US-ASCII");
-                                   readBufferPosition = 0;
-                                   handler.post(new Runnable() {
-                                       public void run() {
-                                           openData = data;
-                                       }
-                                   });
-                               }
-                               else {
-                                   readBuffer[readBufferPosition++] = b;
-                               }
-                           }
-                        }
-                    } catch(IOException ex) {
-                        stopWorker = true;
-                    }
-                }
-            }
-        });
-        t.start();
-    }
-}
-
-class Stopwatch {
-
-    private final long start;
-
-    public Stopwatch() {
-        start = System.currentTimeMillis();
-    }
-
-    public double elapsedTime() {
-        long now = System.currentTimeMillis();
-        return (now - start);
     }
 }
