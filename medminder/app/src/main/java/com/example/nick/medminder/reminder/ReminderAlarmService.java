@@ -162,21 +162,32 @@ public class ReminderAlarmService extends IntentService {
                 openData = btArduino.getStatus();
             } catch (IOException ex) {}
 
-            if (openData.equals("0") && s.elapsedTime() > 5000) {
+            if (openData.equals("0") && s.elapsedTime() > 2000) {
                 mediaPlayer.stop();
                 builder.setContentText("Box opened! Reminder dismissed.");
                 notification = builder.build();
                 manager.notify(NOTIFICATION_ID + 1, notification);
+                Stopwatch check = new Stopwatch();
+                while(openData.equals("0")) {
+                    try {
+                        openData = btArduino.getStatus();
+                    } catch (IOException ex) {}
+                    if(check.elapsedTime() > 15000) {
+                        builder.setContentText("Please close the box!");
+                        notification = builder.build();
+                        manager.notify(NOTIFICATION_ID + 4, notification);
+                    }
+                }
                 break;
             }
-            if (openData.equals("1") && s.elapsedTime() > 10000) {
+            if (openData.equals("1") && s.elapsedTime() > 20000) {
                 for (; notif_counter_A < 1; notif_counter_A++) {
                     builder.setContentText("Secondary Reminder.");
                     notification = builder.build();
                     manager.notify(NOTIFICATION_ID + 2, notification);
                 }
             }
-            if (openData.equals("1") && s.elapsedTime() > 20000) {
+            if (openData.equals("1") && s.elapsedTime() > 40000) {
                 mediaPlayer.stop();
                 for (; notif_counter_B < 1; notif_counter_B++) {
                     builder.setContentText("Tertiary Reminder, Emergency contact will be notified.");
