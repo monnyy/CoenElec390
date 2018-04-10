@@ -138,12 +138,12 @@ public class ReminderAlarmService extends IntentService {
         Notification notification = builder.build();
         manager.notify(NOTIFICATION_ID, notification);
         btArduino = BluetoothArduinoHelper.getInstance(DEVICE_NAME);
-        Stopwatch connectionfail = new Stopwatch();
+        Stopwatch connectionFail = new Stopwatch();
         while(!btArduino.isConnected()) {
-            if(connectionfail.elapsedTime() > 30000 && connectionfail.elapsedTime() < 40000) {
+            if(connectionFail.elapsedTime() > 30000) {
                 builder.setContentText("Error! Please make sure the Bluetooth connection has been established to the box!");
                 notification = builder.build();
-                manager.notify(NOTIFICATION_ID, notification);
+                manager.notify(NOTIFICATION_ID + 5, notification);
             }
             try {
                 btArduino.Connect();
@@ -176,6 +176,11 @@ public class ReminderAlarmService extends IntentService {
                         builder.setContentText("Please close the box!");
                         notification = builder.build();
                         manager.notify(NOTIFICATION_ID + 4, notification);
+                    }
+                    if(openData.equals("1")) {
+                        builder.setContentText("Box closed! Thank you.");
+                        notification = builder.build();
+                        manager.notify(NOTIFICATION_ID + 6, notification);
                     }
                 }
                 break;
