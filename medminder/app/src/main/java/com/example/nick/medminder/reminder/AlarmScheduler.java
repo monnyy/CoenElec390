@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 
 /**
- * Created by delaroy on 9/22/17.
+ * SOURCE: delaroy
  */
 
 public class AlarmScheduler {

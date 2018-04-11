@@ -4,7 +4,7 @@ import android.app.AlarmManager;
 import android.content.Context;
 
 /**
- * Created by delaroy on 9/22/17.
+ * SOURCE: delaroy
  */
 
 public class AlarmManagerProvider {

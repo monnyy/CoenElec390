@@ -5,28 +5,48 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.nick.medminder.AddReminderActivity;
 import com.example.nick.medminder.LoginActivity;
 import com.example.nick.medminder.R;
 import com.example.nick.medminder.data.AlarmReminderContract;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Set;
+import java.util.UUID;
+
 /**
- * Created by delaroy on 9/22/17.
+ * Created by Nick.
  */
 
 public class ReminderAlarmService extends IntentService {
     private static final String TAG = ReminderAlarmService.class.getSimpleName();
     private static final String id = "nick_channel_1";
     private static final String name = "nick_1";
-;    private static final int NOTIFICATION_ID = 42;
+    private static final int NOTIFICATION_ID = 42;
+    private static final int FIVE_MIN = 300000;
+    private static final int TEN_MIN = 600000;
+    private static final String DEVICE_NAME = "HC-05";
+    private Boolean open = false;
+    private String openData;
+    private BluetoothArduinoHelper btArduino;
+
     //This is a deep link intent, and needs the task stack
     public static PendingIntent getReminderPendingIntent(Context context, Uri uri) {
         Intent action = new Intent(context, ReminderAlarmService.class);
@@ -117,5 +137,73 @@ public class ReminderAlarmService extends IntentService {
 
         Notification notification = builder.build();
         manager.notify(NOTIFICATION_ID, notification);
+        btArduino = BluetoothArduinoHelper.getInstance(DEVICE_NAME);
+        Stopwatch connectionFail = new Stopwatch();
+        while(!btArduino.isConnected()) {
+            if(connectionFail.elapsedTime() > 30000) {
+                builder.setContentText("Error! Please make sure the Bluetooth connection has been established to the box!");
+                notification = builder.build();
+                manager.notify(NOTIFICATION_ID + 5, notification);
+            }
+            try {
+                btArduino.Connect();
+            } catch (Exception ex) {
+                Log.d(TAG, "\t\tCannot make connection!");
+            }
+        }
+        Stopwatch s = new Stopwatch();
+        int notif_counter_A = 0, notif_counter_B = 0;
+        MediaPlayer mediaPlayer;
+        mediaPlayer = MediaPlayer.create(this, R.raw.sound);
+        mediaPlayer.start();
+        while(true) {
+
+            try {
+                openData = btArduino.getStatus();
+            } catch (IOException ex) {}
+
+            if (openData.equals("0") && s.elapsedTime() > 2000) {
+                mediaPlayer.stop();
+                builder.setContentText("Box opened! Reminder dismissed.");
+                notification = builder.build();
+                manager.notify(NOTIFICATION_ID + 1, notification);
+                Stopwatch check = new Stopwatch();
+                while(openData.equals("0")) {
+                    try {
+                        openData = btArduino.getStatus();
+                    } catch (IOException ex) {}
+                    if(check.elapsedTime() > 15000) {
+                        builder.setContentText("Please close the box!");
+                        notification = builder.build();
+                        manager.notify(NOTIFICATION_ID + 4, notification);
+                    }
+                    if(openData.equals("1")) {
+                        builder.setContentText("Box closed! Thank you.");
+                        notification = builder.build();
+                        manager.notify(NOTIFICATION_ID + 6, notification);
+                    }
+                }
+                break;
+            }
+            if (openData.equals("1") && s.elapsedTime() > 20000) {
+                for (; notif_counter_A < 1; notif_counter_A++) {
+                    builder.setContentText("Secondary Reminder.");
+                    notification = builder.build();
+                    manager.notify(NOTIFICATION_ID + 2, notification);
+                }
+            }
+            if (openData.equals("1") && s.elapsedTime() > 40000) {
+                mediaPlayer.stop();
+                for (; notif_counter_B < 1; notif_counter_B++) {
+                    builder.setContentText("Tertiary Reminder, Emergency contact will be notified.");
+                    notification = builder.build();
+                    manager.notify(NOTIFICATION_ID + 3, notification);
+                }
+                //send text
+                notif_counter_A = 0;
+                notif_counter_B = 0;
+                break;
+            }
+        }
     }
 }

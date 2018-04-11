@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:textStyle="bold"
-        android:text="CLICK ON REMINDER TITLE TO SET ALARM"/>
+        android:text="Tap on an existing reminder to edit it!"
+        android:textSize="20dp"
+        android:textStyle="bold" />
     <ListView
         android:id="@+id/list"
         android:layout_below="@+id/reminderText"

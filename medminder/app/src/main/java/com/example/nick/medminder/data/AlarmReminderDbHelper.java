@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 /**
- * Created by delaroy on 10/25/17.
+ * SOURCE: delaroy
  */
 
 public class AlarmReminderDbHelper extends SQLiteOpenHelper {
