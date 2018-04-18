@@ -1,7 +1,8 @@
 # COEN 390 - Engineering Team Design Project
 
-### Github: [coenelec390app](https://github.com/monnyy/coenelec390app)
-### Wiki: [coenelec390app/wiki](https://github.com/monnyy/coenelec390app/wiki) 
+### ReMed Me!
+### Github: [CoenElec390](https://github.com/monnyy/CoenElec390)
+### Wiki: [CoenElec390/wiki](https://github.com/monnyy/CoenElec390/wiki) 
 ### Slack : [coenelec390teamd.slack.com](https://coenelec390teamd.slack.com/)  
 
 ---  
