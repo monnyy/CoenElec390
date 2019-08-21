@@ -2,7 +2,7 @@
 
 ### ReMed Me!
 ### Github: [CoenElec390](https://github.com/monnyy/CoenElec390)
-### Wiki: [CoenElec390/wiki](https://github.com/monnyy/CoenElec390/wiki) 
+### Wiki|Documentation: [CoenElec390/wiki](https://github.com/monnyy/CoenElec390/wiki) 
 ### Slack : [coenelec390teamd.slack.com](https://coenelec390teamd.slack.com/)  
 
 ---  
